@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cone</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="../assets/script.js"></script>
+</head>
+
+<body>
+    <div class="titulo-container">
+        <header>
+            <div id="seta-titulo">
+                <a href="./index.html">
+                    <img width="70" src="../assets/images/seta-esquerda.png" alt="seta">
+                </a>
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <h1 style="margin-right: 6%;">Sólidos Geométricos</h1>
+                </div>
+            </div>
+            <h3>CONE</h3>
+        </header>
+
+        <hr>
+
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <div class="imagem-texto">
+                <figure>
+                    <img width="190" src="../assets/images/cone.png">
+                    <figcaption>Cone</figcaption>
+                </figure>
+                <p id="descricao">
+                    O cone é um sólido geométrico com uma base circular e uma superfície lateral que se afunila até um
+                    ponto chamado vértice.
+                    Ele é amplamente utilizado em diversos contextos, como em montanhas, funis e torres.
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>Calculadora de Volume<br> do Cone</h3>
+
+        <hr>
+
+        <div style="display: flex;">
+            <div
+                style="display: flex; justify-content: center; align-items: center; width: 60%; flex-direction: column;">
+                <h3>Medidas</h3>
+                <div class="grupo1" style="margin-top: 2%; display: flex; flex-direction: column;">
+                    <div id="Figuras" style="display: flex; flex-direction: column; gap: 1px;">
+                        <input type="number" name="raioCone" id="raioCone" placeholder="Digite o Raio(cm)">
+                        <input type="number" name="alturaCone" id="alturaCone" placeholder="Digite a Altura(cm)">
+                    </div>
+
+
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <button style="width: 25%;" class="button" onclick="calcularCone()">Calcular</button>
+                        <button style="width: 25%;" class="button" onclick="limparMedidasCone()">Limpar</button>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; margin-top: 10px;">
+                        <button class="button" onclick="toggleFormula()">Ver Fórmula</button>
+                    </div>
+                </div>
+            </div>
+            <div id="resultados"
+                style="display: flex; flex-direction: column; width: 50%; padding: 10px; border-radius: 5px; border: 1px solid #cccccc; font-size: 15px; align-items: center;">
+                <h3>Resultados</h3>
+                <hr style="width: 100%;">
+                <p id="areaCone"></p>
+                <p id="volumeCone"></p>
+            </div>
+        </div>
+
+        <div id="formula" style="display: none; justify-content: center; width: 100%; margin-top: 30px;">
+            <div class="formula-texto">
+                <p id="descricao">
+                    <b>Início:</b> <br>
+                    Receber os valores do raio (𝑟) e altura (ℎ) do cone. <br><br>
+                    Calcular a Área:<br>
+                    <b>𝐴 = π × r² + π × r × g</b> (onde "g" é a geratriz: g = √(r² + h²))<br><br>
+                    Calcular o Volume:<br>
+                    <b>𝑉 = (1/3) × π × r² × h</b><br><br>
+                    <b>Fim.</b>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
