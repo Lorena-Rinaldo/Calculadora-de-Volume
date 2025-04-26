@@ -94,6 +94,20 @@ figcaption {
     border-radius: 10px;
 }
 
+#descricaoFormula {
+    font-size: 16px;
+    color: #000000;
+    text-align: justify;
+    line-height: 1.6;
+    padding: 20px;
+    width: 420px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    border: 2px solid #73abd3;
+    border-radius: 10px;
+}
+
+
 .links {
     width: 100%;
 }
@@ -205,10 +219,10 @@ input {
 #resultados {
     display: flex;
     margin-right: 30px;
-
 }
 
 #resultados p {
+    display: flex;
     margin: 0;
     padding: 10px;
     border: 1px solid #cccccc;
@@ -219,4 +233,19 @@ input {
     margin-bottom: 1%;
     width: 50%;
     text-align: center;
+}
+
+#baseTriangular, #baseQuadrangular, #basePentagonal, #baseHexagonal, #baseHeptagonal, #baseOctogonal  {
+    display: none;
+}
+
+select {
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
 }

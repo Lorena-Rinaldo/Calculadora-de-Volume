@@ -114,7 +114,6 @@ function calcularValoresDodecaedro() {
     }
 }
 
-// Função para calcular a área e o volume da esfera
 function calcularEsfera() {
     let raio = document.getElementById('raio').value;
 
@@ -202,8 +201,177 @@ function limparMedidasCilindro() {
 function toggleFormula() {
     var formulaDiv = document.getElementById("formula");
     if (formulaDiv.style.display === "none") {
-        formulaDiv.style.display = "flex"; 
+        formulaDiv.style.display = "flex";
     } else {
-        formulaDiv.style.display = "none"; 
+        formulaDiv.style.display = "none";
     }
 }
+
+function mostrarCalculadora(formaSelecionada) {
+    baseTriangular.style.display = "none";
+    baseQuadrangular.style.display = "none";
+    basePentagonal.style.display = "none";
+    baseHexagonal.style.display = "none";
+    baseHeptagonal.style.display = "none";
+    baseOctogonal.style.display = "none";
+
+    if (formaSelecionada === "triangular") {
+        baseTriangular.style.display = "block";
+    } else if (formaSelecionada === "quadrangular") {
+        baseQuadrangular.style.display = "block";
+    } else if (formaSelecionada === "pentagonal") {
+        basePentagonal.style.display = "block";
+    } else if (formaSelecionada === "hexagonal") {
+        baseHexagonal.style.display = "block";
+    } else if (formaSelecionada === "heptagonal") {
+        baseHeptagonal.style.display = "block";
+    } else if (formaSelecionada === "octogonal") {
+        baseOctogonal.style.display = "block";
+    }
+}
+
+function calcularVolume(tipoBase) {
+    let areaBase, altura, volume;
+
+    altura = parseFloat(document.getElementById("altura").value);
+
+    if (isNaN(altura) || altura <= 0) {
+        alert("Por favor, insira um valor válido para a altura.");
+        return;
+    }
+
+    if (tipoBase === "triangular") {
+        let ladoTriangular = parseFloat(document.getElementById("ladoTriangular").value);
+        if (isNaN(ladoTriangular) || ladoTriangular <= 0) {
+            alert("Por favor, insira um valor válido para o lado do triângulo.");
+            return;
+        }
+        areaBase = (Math.pow(ladoTriangular, 2) * Math.sqrt(3)) / 4;
+    } else if (tipoBase === "quadrangular") {
+        let comprimento = parseFloat(document.getElementById("comprimento").value);
+        let largura = parseFloat(document.getElementById("largura").value);
+        if (isNaN(comprimento) || comprimento <= 0 || isNaN(largura) || largura <= 0) {
+            alert("Por favor, insira valores válidos para o comprimento e a largura.");
+            return;
+        }
+        areaBase = comprimento * largura;
+    } else if (tipoBase === "pentagonal") {
+        let ladoPentagonal = parseFloat(document.getElementById("ladoPentagonal").value);
+        if (isNaN(ladoPentagonal) || ladoPentagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado da base pentagonal.");
+            return;
+        }
+        areaBase = (5 * Math.pow(ladoPentagonal, 2)) / (4 * Math.tan(Math.PI / 5));
+    } else if (tipoBase === "hexagonal") {
+        let ladoHexagonal = parseFloat(document.getElementById("ladoHexagonal").value);
+        if (isNaN(ladoHexagonal) || ladoHexagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado da base hexagonal.");
+            return;
+        }
+        areaBase = (3 * Math.sqrt(3) * Math.pow(ladoHexagonal, 2)) / 2;
+    } else if (tipoBase === "heptagonal") {
+        let ladoHeptagonal = parseFloat(document.getElementById("ladoHeptagonal").value);
+        if (isNaN(ladoHeptagonal) || ladoHeptagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado da base heptagonal.");
+            return;
+        }
+        areaBase = (7 * Math.pow(ladoHeptagonal, 2)) / (4 * Math.tan(Math.PI / 7));
+    } else if (tipoBase === "octogonal") {
+        let ladoOctogonal = parseFloat(document.getElementById("ladoOctogonal").value);
+        if (isNaN(ladoOctogonal) || ladoOctogonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado da base octogonal.");
+            return;
+        }
+        areaBase = 2 * (1 + Math.sqrt(2)) * Math.pow(ladoOctogonal, 2);
+    }
+
+    volume = (areaBase * altura) / 3;
+
+    document.getElementById("area").innerHTML = "Área da base: " + areaBase.toFixed(2) + " cm²";
+    document.getElementById("volume").innerHTML = "Volume: " + volume.toFixed(2) + " cm³";
+    document.getElementById("area").style.display = "block";
+    document.getElementById("volume").style.display = "block";
+}
+
+function limparCampos() {
+    document.getElementById("ladoTriangular").value = "";
+    document.getElementById("comprimento").value = "";
+    document.getElementById("largura").value = "";
+    document.getElementById("ladoPentagonal").value = "";
+    document.getElementById("ladoHexagonal").value = "";
+    document.getElementById("ladoHeptagonal").value = "";
+    document.getElementById("ladoOctogonal").value = "";
+    document.getElementById("altura").value = "";
+    document.getElementById("volume").innerHTML = "";
+    document.getElementById("area").innerHTML = "";
+}
+
+function toggleFormulaPiramides() {
+    const tipoBase = document.getElementById('tipo').value;
+    const formulaContainer = document.getElementById('formula');
+    const descricaoFormula = document.getElementById('descricaoFormula');
+
+    if (tipoBase === "triangular") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Triangular:</b><br>
+            Área da base (triangular):<br> 
+            <b>A = (l² * √3) / 4</b><br>
+            Volume da pirâmide:<br>
+            <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "quadrangular") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Quadrangular:</b><br>
+            Área da base (quadrangular): <br>
+            <b>A = comprimento × largura</b><br>
+            Volume da pirâmide: <br>
+            <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "pentagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Pentagonal:</b><br>
+            Área da base (pentagonal):<br>
+             <b>A = (5 * l²) / (4 * tan(π / 5))</b><br>
+            Volume da pirâmide:<br>
+             <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "hexagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Hexagonal:</b><br>
+            Área da base (hexagonal):<br>
+             <b>A = (3 * √3 * l²) / 2</b><br>
+            Volume da pirâmide:<br>
+             <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "heptagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Heptagonal:</b><br>
+            Área da base (heptagonal):<br>
+             <b>A = (7 * l²) / (4 * tan(π / 7))</b><br>
+            Volume da pirâmide:<br>
+             <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "octogonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Pirâmide de Base Octogonal:</b><br>
+            Área da base (octogonal):<br>
+             <b>A = 2 * (1 + √2) * l²</b><br>
+            Volume da pirâmide:<br>
+             <b>V = (A_b * h) / 3</b><br>
+            <b>Fim.</b>
+        `;
+    }
+
+    formulaContainer.style.display = formulaContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+
+
+
+
+
