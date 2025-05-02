@@ -8,6 +8,7 @@ body {
     flex-direction: column;
 }
 
+
 #seta-titulo {
     display: flex;
     justify-content: space-between;
@@ -20,7 +21,8 @@ body {
     padding: 20px;
     display: inline-block;
     border-radius: 8px;
-    width: 60em;
+    width: 80em;
+    min-height: 20em;
 }
 
 h1,h3 {
@@ -34,7 +36,6 @@ h1,h3 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 20px;
     width: 80%;
     color: #f4f4f4;
 }
@@ -44,7 +45,7 @@ h1,h3 {
     align-items: center;
     justify-content: space-around;
     gap: 20px;
-    width: 80%;
+    width: 100%;
     color: #f4f4f4;
 }
 
@@ -171,7 +172,7 @@ hr {
 }
 
 #Figuras1 img {
-    width: 80px;
+    width: 5em;
     height: auto;
 }
 
@@ -180,15 +181,20 @@ input::placeholder {
 }
 
 .button {
+    display: inline-block;
     text-decoration: none;
+    justify-content: center;
+    align-items: center;
     background-color: #73abd3;
     color: white;
     padding: 10px 20px;
     border-radius: 20px;
-    display: inline-block;
     font-weight: bold;
-    width: 130px;
+    width: 10em;
+    min-height: 1.5em;
+    margin-left: 3%;
 }
+
 
 .button:hover {
     background-color: #1a66b7;
@@ -214,6 +220,7 @@ input {
     border: 1px solid #cccccc;
     margin-bottom: 10px;
     font-size: 15px;
+    height: 1.5em
 }
 
 #resultados {
@@ -246,6 +253,7 @@ select {
 form {
     display: flex;
     width: 100%;
+    height: 2em;
     justify-content: center;
     margin-bottom: 15px;
 }

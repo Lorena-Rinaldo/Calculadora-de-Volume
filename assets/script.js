@@ -233,7 +233,19 @@ function mostrarCalculadora(formaSelecionada) {
 function calcularVolume(tipoBase) {
     let areaBase, altura, volume;
 
-    altura = parseFloat(document.getElementById("altura").value);
+    if (tipoBase === "triangular") {
+        altura = parseFloat(document.getElementById("alturaTriangular").value);
+    } else if (tipoBase === "quadrangular") {
+        altura = parseFloat(document.getElementById("alturaQuadrangular").value);
+    } else if (tipoBase === "pentagonal") {
+        altura = parseFloat(document.getElementById("alturaPentagonal").value);
+    } else if (tipoBase === "hexagonal") {
+        altura = parseFloat(document.getElementById("alturaHexagonal").value);
+    } else if (tipoBase === "heptagonal") {
+        altura = parseFloat(document.getElementById("alturaHeptagonal").value);
+    } else if (tipoBase === "octogonal") {
+        altura = parseFloat(document.getElementById("alturaOctogonal").value);
+    }
 
     if (isNaN(altura) || altura <= 0) {
         alert("Por favor, insira um valor válido para a altura.");
@@ -292,6 +304,7 @@ function calcularVolume(tipoBase) {
     document.getElementById("area").style.display = "block";
     document.getElementById("volume").style.display = "block";
 }
+
 
 function limparCampos() {
     document.getElementById("ladoTriangular").value = "";
@@ -369,6 +382,139 @@ function toggleFormulaPiramides() {
 
     formulaContainer.style.display = formulaContainer.style.display === 'none' ? 'block' : 'none';
 }
+
+function mostrarCalculadora(formaSelecionada) {
+    baseTriangular.style.display = "none";
+    baseQuadrangular.style.display = "none";
+    basePentagonal.style.display = "none";
+    baseHexagonal.style.display = "none";
+    baseHeptagonal.style.display = "none";
+    baseOctogonal.style.display = "none";
+
+    if (formaSelecionada === "triangular") {
+        baseTriangular.style.display = "block";
+    } else if (formaSelecionada === "quadrangular") {
+        baseQuadrangular.style.display = "block";
+    } else if (formaSelecionada === "pentagonal") {
+        basePentagonal.style.display = "block";
+    } else if (formaSelecionada === "hexagonal") {
+        baseHexagonal.style.display = "block";
+    } else if (formaSelecionada === "heptagonal") {
+        baseHeptagonal.style.display = "block";
+    } else if (formaSelecionada === "octogonal") {
+        baseOctogonal.style.display = "block";
+    }
+}
+
+function calcularVolumePrisma(tipoBase) {
+    let areaBase, altura, volume;
+
+    altura = parseFloat(document.getElementById("altura").value);
+
+    if (isNaN(altura) || altura <= 0) {
+        alert("Por favor, insira um valor válido para a altura.");
+        return;
+    }
+
+    if (tipoBase === "triangular") {
+        let ladoTriangular = parseFloat(document.getElementById("ladoTriangular").value);
+        if (isNaN(ladoTriangular) || ladoTriangular <= 0) {
+            alert("Por favor, insira um valor válido para o lado do triângulo.");
+            return;
+        }
+        areaBase = (Math.pow(ladoTriangular, 2) * Math.sqrt(3)) / 4;
+    } else if (tipoBase === "quadrangular") {
+        let comprimento = parseFloat(document.getElementById("comprimento").value);
+        let largura = parseFloat(document.getElementById("largura").value);
+        if (isNaN(comprimento) || comprimento <= 0 || isNaN(largura) || largura <= 0) {
+            alert("Por favor, insira valores válidos para o comprimento e a largura.");
+            return;
+        }
+        areaBase = comprimento * largura;
+    }
+
+    volume = areaBase * altura;
+
+    document.getElementById("area").innerHTML = "Área da base: " + areaBase.toFixed(2) + " cm²";
+    document.getElementById("volume").innerHTML = "Volume: " + volume.toFixed(2) + " cm³";
+    document.getElementById("area").style.display = "block";
+    document.getElementById("volume").style.display = "block";
+}
+
+function limparCampos() {
+    document.getElementById("ladoTriangular").value = "";
+    document.getElementById("comprimento").value = "";
+    document.getElementById("largura").value = "";
+    document.getElementById("altura").value = "";
+    document.getElementById("volume").innerHTML = "";
+    document.getElementById("area").innerHTML = "";
+}
+
+function toggleFormulaPrismas() {
+    const tipoBase = document.getElementById('tipo').value;
+    const formulaContainer = document.getElementById('formula');
+    const descricaoFormula = document.getElementById('descricaoFormula');
+
+    if (tipoBase === "triangular") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Triangular:</b><br>
+            Área da base (triangular):<br> 
+            <b>A = (l² * √3) / 4</b><br>
+            Volume do prisma:<br>
+            <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "quadrangular") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Quadrangular:</b><br>
+            Área da base (quadrangular): <br>
+            <b>A = comprimento × largura</b><br>
+            Volume do prisma: <br>
+            <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "pentagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Pentagonal:</b><br>
+            Área da base (pentagonal):<br>
+             <b>A = (5 * l²) / (4 * tan(π / 5))</b><br>
+            Volume do prisma:<br>
+             <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "hexagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Hexagonal:</b><br>
+            Área da base (hexagonal):<br>
+             <b>A = (3 * √3 * l²) / 2</b><br>
+            Volume do prisma:<br>
+             <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "heptagonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Heptagonal:</b><br>
+            Área da base (heptagonal):<br>
+             <b>A = (7 * l²) / (4 * tan(π / 7))</b><br>
+            Volume do prisma:<br>
+             <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    } else if (tipoBase === "octogonal") {
+        descricaoFormula.innerHTML = `
+            <b>Fórmula para Prisma de Base Octogonal:</b><br>
+            Área da base (octogonal):<br>
+             <b>A = 2 * (1 + √2) * l²</b><br>
+            Volume do prisma:<br>
+             <b>V = A_b * h</b><br>
+            <b>Fim.</b>
+        `;
+    }
+
+    formulaContainer.style.display = formulaContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+
 
 
 

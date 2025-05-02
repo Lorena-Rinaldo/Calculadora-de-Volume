@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pirâmides</title>
+    <title>Prismas</title>
     <link rel="stylesheet" href="../assets/style.css">
     <script src="../assets/script.js"></script>
 </head>
@@ -20,7 +21,7 @@
                     <h1 style="margin-right: 6%;">Sólidos Geométricos</h1>
                 </div>
             </div>
-            <h3>PIRÂMIDES</h3>
+            <h3>PRISMAS</h3>
         </header>
 
         <hr>
@@ -28,21 +29,19 @@
         <div style="display: flex; justify-content: center; width: 100%;">
             <div class="imagem-texto">
                 <figure>
-                    <img width="190" src="../assets/images/piramide.png">
-                    <figcaption>Pirâmides</figcaption>
+                    <img width="190" src="../assets/images/prisma.png">
+                    <figcaption>Prismas</figcaption>
                 </figure>
                 <p id="descricao">
-                    A pirâmide é um sólido tridimensional com base poligonal e faces triangulares convergentes para um
-                    vértice. Pode ter bases triangulares, quadrangulares, pentagonais, etc., tanto regulares quanto
-                    irregulares. Essa estrutura geométrica é amplamente utilizada na arquitetura e na arte, sendo um
-                    conceito fundamental na geometria espacial.
+                    O prisma é um sólido geométrico que possui duas bases congruentes e faces laterais que são
+                    paralelogramos. O volume do prisma é dado pela área da base multiplicada pela altura.
                 </p>
             </div>
         </div>
 
         <hr>
 
-        <h3>Calculadora de Volume<br> das Figuras Geométricas</h3>
+        <h3>Calculadora de Volume<br> dos Prismas</h3>
 
         <hr>
 
@@ -53,7 +52,7 @@
                 <div class="grupo1" style="margin-top: 2%; display: flex; flex-direction: column;">
                     <form>
                         <select id="tipo" name="tipo" onchange="mostrarCalculadora(this.value)">
-                            <option value="escolha" selected disabled>Escolha a Base da Pirâmide</option>
+                            <option value="escolha" selected disabled>Escolha a Base do Prisma</option>
                             <option value="triangular">Base Triangular</option>
                             <option value="quadrangular">Base Quadrangular</option>
                             <option value="pentagonal">Base Pentagonal</option>
@@ -62,107 +61,118 @@
                             <option value="octogonal">Base Octogonal</option>
                         </select>
                     </form>
-                    
 
                     <div id="baseTriangular">
                         <div id="Figuras">
-                            <input type="number" name="ladoTriangular" id="ladoTriangular" placeholder="Digite o Lado do Triângulo(cm)">
+                            <input type="number" name="ladoTriangular" id="ladoTriangular"
+                                placeholder="Digite o Lado do Triângulo(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaTriangular" id="alturaTriangular" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('triangular')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('triangular')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                     <div id="baseQuadrangular">
                         <div id="Figuras">
-                            <input type="number" name="comprimento" id="comprimento" placeholder="Digite o Comprimento(cm)">
+                            <input type="number" name="comprimento" id="comprimento"
+                                placeholder="Digite o Comprimento(cm)">
                         </div>
                         <div id="Figuras">
                             <input type="number" name="largura" id="largura" placeholder="Digite a Largura(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaQuadrangular" id="alturaQuadrangular" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('quadrangular')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('quadrangular')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                     <div id="basePentagonal">
                         <div id="Figuras">
-                            <input type="number" name="ladoPentagonal" id="ladoPentagonal" placeholder="Digite o Lado(cm)">
+                            <input type="number" name="ladoPentagonal" id="ladoPentagonal"
+                                placeholder="Digite o Lado(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaPentagonal" id="alturaPentagonal" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('pentagonal')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('pentagonal')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                     <div id="baseHexagonal">
                         <div id="Figuras">
-                            <input type="number" name="ladoHexagonal" id="ladoHexagonal" placeholder="Digite o Lado(cm)">
+                            <input type="number" name="ladoHexagonal" id="ladoHexagonal"
+                                placeholder="Digite o Lado(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaHexagonal" id="alturaHexagonal" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('hexagonal')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('hexagonal')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                     <div id="baseHeptagonal">
                         <div id="Figuras">
-                            <input type="number" name="ladoHeptagonal" id="ladoHeptagonal" placeholder="Digite o Lado(cm)">
+                            <input type="number" name="ladoHeptagonal" id="ladoHeptagonal"
+                                placeholder="Digite o Lado(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaHeptagonal" id="alturaHeptagonal" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('heptagonal')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('heptagonal')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                     <div id="baseOctogonal">
                         <div id="Figuras">
-                            <input type="number" name="ladoOctogonal" id="ladoOctogonal" placeholder="Digite o Lado(cm)">
+                            <input type="number" name="ladoOctogonal" id="ladoOctogonal"
+                                placeholder="Digite o Lado(cm)">
                         </div>
                         <div id="Figuras">
-                            <input type="number" name="alturaOctognal" id="alturaOctognal" placeholder="Digite a Altura(cm)">
+                            <input type="number" name="altura" id="altura" placeholder="Digite a Altura(cm)">
                         </div>
                         <div style="display: flex; justify-content: center; width: 100%;">
-                            <button style="width: 25%;" class="button" onclick="calcularVolume('octogonal')">Calcular</button>
+                            <button style="width: 25%;" class="button"
+                                onclick="calcularVolume('octogonal')">Calcular</button>
                             <button style="width: 25%;" class="button" onclick="limparCampos()">Limpar</button>
                         </div>
                         <div style="display: flex; justify-content: center; margin-top: 10px;">
-                            <button class="button" onclick="toggleFormulaPiramides()">Ver Fórmula</button>
+                            <button class="button" onclick="toggleFormulaPrismas()">Ver Fórmula</button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div id="resultados"
@@ -175,11 +185,11 @@
         </div>
 
         <div id="formula" style="display: none; justify-content: center; width: 100%; margin-top: 30px;">
-                <div class="formula-texto" style="text-align: center; width: 100%;">
-                    <p id="descricaoFormula"></p>
-                </div>
+            <div class="formula-texto" style="text-align: center; width: 100%;">
+                <p id="descricaoFormula"></p>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
