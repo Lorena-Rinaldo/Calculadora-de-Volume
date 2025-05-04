@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 90vh;
     background-color: #f4f4f4;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     flex-direction: column;
@@ -21,8 +21,8 @@ body {
     padding: 20px;
     display: inline-block;
     border-radius: 8px;
-    width: 80em;
-    min-height: 20em;
+    width: 70em;
+    max-height: 45em;
 }
 
 h1,h3 {

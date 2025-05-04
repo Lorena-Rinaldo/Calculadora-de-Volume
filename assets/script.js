@@ -230,7 +230,7 @@ function mostrarCalculadora(formaSelecionada) {
     }
 }
 
-function calcularVolume(tipoBase) {
+function calcularVolumePiramides(tipoBase) {
     let areaBase, altura, volume;
 
     if (tipoBase === "triangular") {
@@ -259,38 +259,47 @@ function calcularVolume(tipoBase) {
             return;
         }
         areaBase = (Math.pow(ladoTriangular, 2) * Math.sqrt(3)) / 4;
-    } else if (tipoBase === "quadrangular") {
-        let comprimento = parseFloat(document.getElementById("comprimento").value);
-        let largura = parseFloat(document.getElementById("largura").value);
-        if (isNaN(comprimento) || comprimento <= 0 || isNaN(largura) || largura <= 0) {
+    } 
+    
+    else if (tipoBase === "quadrangular") {
+        let ladoQuadrangular = parseFloat(document.getElementById("ladoQuadrangular").value);
+        if (ladoQuadrangular <= 0) {
             alert("Por favor, insira valores válidos para o comprimento e a largura.");
             return;
         }
-        areaBase = comprimento * largura;
-    } else if (tipoBase === "pentagonal") {
+        areaBase = Math.pow(ladoQuadrangular, 2);
+    } 
+    
+    else if (tipoBase === "pentagonal") {
         let ladoPentagonal = parseFloat(document.getElementById("ladoPentagonal").value);
-        if (isNaN(ladoPentagonal) || ladoPentagonal <= 0) {
+        if (ladoPentagonal <= 0) {
             alert("Por favor, insira um valor válido para o lado da base pentagonal.");
             return;
         }
         areaBase = (5 * Math.pow(ladoPentagonal, 2)) / (4 * Math.tan(Math.PI / 5));
-    } else if (tipoBase === "hexagonal") {
+    }
+    
+    else if (tipoBase === "hexagonal") {
         let ladoHexagonal = parseFloat(document.getElementById("ladoHexagonal").value);
-        if (isNaN(ladoHexagonal) || ladoHexagonal <= 0) {
+        if (ladoHexagonal <= 0) {
             alert("Por favor, insira um valor válido para o lado da base hexagonal.");
             return;
         }
         areaBase = (3 * Math.sqrt(3) * Math.pow(ladoHexagonal, 2)) / 2;
-    } else if (tipoBase === "heptagonal") {
+    } 
+    
+    else if (tipoBase === "heptagonal") {
         let ladoHeptagonal = parseFloat(document.getElementById("ladoHeptagonal").value);
-        if (isNaN(ladoHeptagonal) || ladoHeptagonal <= 0) {
+        if (ladoHeptagonal <= 0) {
             alert("Por favor, insira um valor válido para o lado da base heptagonal.");
             return;
         }
         areaBase = (7 * Math.pow(ladoHeptagonal, 2)) / (4 * Math.tan(Math.PI / 7));
-    } else if (tipoBase === "octogonal") {
+    } 
+    
+    else if (tipoBase === "octogonal") {
         let ladoOctogonal = parseFloat(document.getElementById("ladoOctogonal").value);
-        if (isNaN(ladoOctogonal) || ladoOctogonal <= 0) {
+        if (ladoOctogonal <= 0) {
             alert("Por favor, insira um valor válido para o lado da base octogonal.");
             return;
         }
@@ -306,17 +315,34 @@ function calcularVolume(tipoBase) {
 }
 
 
-function limparCampos() {
-    document.getElementById("ladoTriangular").value = "";
-    document.getElementById("comprimento").value = "";
-    document.getElementById("largura").value = "";
-    document.getElementById("ladoPentagonal").value = "";
-    document.getElementById("ladoHexagonal").value = "";
-    document.getElementById("ladoHeptagonal").value = "";
-    document.getElementById("ladoOctogonal").value = "";
-    document.getElementById("altura").value = "";
-    document.getElementById("volume").innerHTML = "";
-    document.getElementById("area").innerHTML = "";
+function limparCamposPiramide(base) {
+    document.getElementById("volume").style.display = "none";
+    document.getElementById("area").style.display = "none";
+
+    if (base === "baseTriangular") {
+        document.getElementById("ladoTriangular").value = "";
+        document.getElementById("alturaTriangular").value = "";
+    }
+    else if (base === "baseQuadrangular") {
+        document.getElementById("ladoQuadrangular").value = "";
+        document.getElementById("alturaQuadrangular").value = "";
+    }
+    else if (base === "basePentagonal") {
+        document.getElementById("ladoPentagonal").value = "";
+        document.getElementById("alturaPentagonal").value = "";
+    }
+    else if (base === "baseHexagonal") {
+        document.getElementById("ladoHexagonal").value = "";
+        document.getElementById("alturaHexagonal").value = "";
+    }
+    else if (base === "baseHeptagonal") {
+        document.getElementById("ladoHeptagonal").value = "";
+        document.getElementById("alturaHeptagonal").value = "";
+    }
+    else if (base === "baseOctogonal") {
+        document.getElementById("ladoOctogonal").value = "";
+        document.getElementById("alturaOctogonal").value = "";
+    }
 }
 
 function toggleFormulaPiramides() {
@@ -407,33 +433,90 @@ function mostrarCalculadora(formaSelecionada) {
 }
 
 function calcularVolumePrisma(tipoBase) {
-    let areaBase, altura, volume;
-
-    altura = parseFloat(document.getElementById("altura").value);
-
-    if (isNaN(altura) || altura <= 0) {
-        alert("Por favor, insira um valor válido para a altura.");
-        return;
-    }
+    let areaBase, volume;
 
     if (tipoBase === "triangular") {
         let ladoTriangular = parseFloat(document.getElementById("ladoTriangular").value);
-        if (isNaN(ladoTriangular) || ladoTriangular <= 0) {
+        if (ladoTriangular <= 0) {
             alert("Por favor, insira um valor válido para o lado do triângulo.");
             return;
         }
+       
         areaBase = (Math.pow(ladoTriangular, 2) * Math.sqrt(3)) / 4;
-    } else if (tipoBase === "quadrangular") {
-        let comprimento = parseFloat(document.getElementById("comprimento").value);
-        let largura = parseFloat(document.getElementById("largura").value);
-        if (isNaN(comprimento) || comprimento <= 0 || isNaN(largura) || largura <= 0) {
-            alert("Por favor, insira valores válidos para o comprimento e a largura.");
+        alturaTriangular = parseFloat(document.getElementById("alturaTriangular").value);
+
+        volume = areaBase * alturaTriangular;
+    } 
+    
+    else if (tipoBase === "quadrangular") {
+        let ladoQuadrangular = parseFloat(document.getElementById("ladoQuadrangular").value);
+        if (ladoQuadrangular <= 0) {
+            alert("Por favor, insira um valor válido para o lado do triângulo.");
             return;
         }
-        areaBase = comprimento * largura;
-    }
+        areaBase = Math.pow(ladoQuadrangular, 2);
+        alturaQuadrangular = parseFloat(document.getElementById("alturaQuadrangular").value);
 
-    volume = areaBase * altura;
+        volume = areaBase * alturaQuadrangular;
+    } 
+    
+    else if (tipoBase === "pentagonal") {
+        let ladoPentagonal = parseFloat(document.getElementById("ladoPentagonal").value);
+        if (ladoPentagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado do pentágono.");
+            return;
+        }
+        
+        areaBase = (5 * Math.pow(ladoPentagonal, 2)) / (4 * Math.tan(Math.PI / 5));
+        alturaPentagonal = parseFloat(document.getElementById("alturaPentagonal").value);
+
+        volume = areaBase * alturaPentagonal;
+    } 
+    
+    else if (tipoBase === "hexagonal") {
+        let ladoHexagonal = parseFloat(document.getElementById("ladoHexagonal").value);
+        if (ladoHexagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado do hexágono.");
+            return;
+        }
+
+        areaBase = (3 * Math.sqrt(3) * Math.pow(ladoHexagonal, 2)) / 2;
+        alturaHexagonal = parseFloat(document.getElementById("alturaHexagonal").value);
+
+        volume = areaBase * alturaHexagonal;
+    } 
+
+    else if (tipoBase === "heptagonal") {
+        let ladoHeptagonal = parseFloat(document.getElementById("ladoHeptagonal").value);
+        if (ladoHeptagonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado do heptágono.");
+            return;
+        }
+        let alturaHeptagonal = parseFloat(document.getElementById("alturaHeptagonal").value);
+        if (alturaHeptagonal <= 0) {
+            alert("Por favor, insira um valor válido para a altura.");
+            return;
+        }
+
+        areaBase = (7 * Math.pow(ladoHeptagonal, 2)) / (4 * Math.tan(Math.PI / 7));
+        volume = areaBase * alturaHeptagonal;
+    } 
+
+    else if (tipoBase === "octogonal") {
+        let ladoOctogonal = parseFloat(document.getElementById("ladoOctogonal").value);
+        if (ladoOctogonal <= 0) {
+            alert("Por favor, insira um valor válido para o lado do octógono.");
+            return;
+        }
+        let alturaOctogonal = parseFloat(document.getElementById("alturaOctogonal").value);
+        if (alturaOctogonal <= 0) {
+            alert("Por favor, insira um valor válido para a altura.");
+            return;
+        }
+
+        areaBase = (8 * Math.pow(ladoOctogonal, 2)) / (4 * Math.tan(Math.PI / 8));
+        volume = areaBase * alturaOctogonal;
+    } 
 
     document.getElementById("area").innerHTML = "Área da base: " + areaBase.toFixed(2) + " cm²";
     document.getElementById("volume").innerHTML = "Volume: " + volume.toFixed(2) + " cm³";
@@ -441,13 +524,35 @@ function calcularVolumePrisma(tipoBase) {
     document.getElementById("volume").style.display = "block";
 }
 
-function limparCampos() {
-    document.getElementById("ladoTriangular").value = "";
-    document.getElementById("comprimento").value = "";
-    document.getElementById("largura").value = "";
-    document.getElementById("altura").value = "";
-    document.getElementById("volume").innerHTML = "";
-    document.getElementById("area").innerHTML = "";
+
+function limparCamposPrisma(base) {
+    document.getElementById("volume").style.display = "none";
+    document.getElementById("area").style.display = "none";
+
+    if (base === "triangular") {
+        document.getElementById("ladoTriangular").value = "";
+        document.getElementById("alturaTriangular").value = "";
+    }
+    else if (base === "quadrangular") {
+        document.getElementById("ladoQuadrangular").value = "";
+        document.getElementById("alturaQuadrangular").value = "";
+    }
+    else if (base === "pentagonal") {
+        document.getElementById("ladoPentagonal").value = "";
+        document.getElementById("alturaPentagonal").value = "";
+    }
+    else if (base === "hexagonal") {
+        document.getElementById("ladoHexagonal").value = "";
+        document.getElementById("alturaHexagonal").value = "";
+    }
+    else if (base === "heptagonal") {
+        document.getElementById("ladoHeptagonal").value = "";
+        document.getElementById("alturaHeptagonal").value = "";
+    }
+    else if (base === "octogonal") {
+        document.getElementById("ladoOctogonal").value = "";
+        document.getElementById("alturaOctogonal").value = "";
+    }
 }
 
 function toggleFormulaPrismas() {
@@ -513,11 +618,3 @@ function toggleFormulaPrismas() {
 
     formulaContainer.style.display = formulaContainer.style.display === 'none' ? 'block' : 'none';
 }
-
-
-
-
-
-
-
-
