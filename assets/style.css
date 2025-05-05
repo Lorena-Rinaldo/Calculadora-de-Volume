@@ -22,7 +22,7 @@ body {
     display: inline-block;
     border-radius: 8px;
     width: 70em;
-    max-height: 45em;
+    min-height: 20em;
 }
 
 h1,h3 {
@@ -197,7 +197,7 @@ input::placeholder {
 
 
 .button:hover {
-    background-color: #1a66b7;
+    background-color: #49a1ff;
     transform: scale(1.1);
 }
 
