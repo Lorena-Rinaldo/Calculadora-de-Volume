@@ -192,10 +192,10 @@ function limparMedidasCone() {
 }
 
 function limparMedidasCilindro() {
-    document.getElementById("raioCilindro").value = "";
-    document.getElementById("alturaCilindro").value = "";
-    document.getElementById("areaCilindro").innerHTML = "";
-    document.getElementById("volumeCilindro").innerHTML = "";
+    document.getElementById('raioCilindro').value = "";
+    document.getElementById('alturaCilindro').value = "";
+    document.getElementById('areaCilindro').style.display = "none";
+    document.getElementById('volumeCilindro').style.display = "none";
 }
 
 function toggleFormula() {
